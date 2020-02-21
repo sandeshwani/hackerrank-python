@@ -39,28 +39,26 @@ Sample Output 1
 
 class Solution:
     
+    @staticmethod
     def solve():
         n = int(input())
         student_marks = {}
         for _ in range(n):
             name, *line = input().split()
             #Other way of taking the input is below
-            """line = input().split()
-            name, scores = line[0], line[1:]
-            print(name)
-            print(type(name))
-            print(scores)
-            print(type(scores))
-            student_marks[name] = scores"""
-            scores = list(map(float, line))
+            """singleLine = input().split()
+            name, line = singleLine[0], singleLine[1:]"""
+            scores = list(map(float,line))
             student_marks[name] = scores
         query_name = str(input())
-        x = student_marks.get(query_name)
-        #print(type(x))
-        total = sum(x)
-        avg = total/3
-        #print('%.2f' %avg)
-        print("{0:.2f}".format(avg)) 
+        if student_marks.__contains__(query_name):
+            x = student_marks.get(query_name)
+            total = sum(x)
+            avg = total/3
+            print('%.2f' %avg)
+            #print("{0:.2f}".format(avg))
+        else:
+            print("%s not found" %query_name)
     
 if __name__ == '__main__':
     e = Solution
