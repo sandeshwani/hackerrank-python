@@ -24,7 +24,7 @@ Sample Output 0
 56.00
 Explanation 0
 
-Marks for Malika are  whose average is 
+Marks for Malika are  whose average is
 
 Sample Input 1
 
@@ -38,28 +38,27 @@ Sample Output 1
 """
 
 class Solution:
-    
+
     @staticmethod
     def solve():
         n = int(input())
         student_marks = {}
         for _ in range(n):
+        ## as line contains multiple vaule, we use *
+        ##Single asterisk as used in function declaration allows variable number of arguments passed from calling environment. Inside the function it behaves as a tuple.
+        ## https://www.tutorialspoint.com/What-does-the-Star-operator-mean-in-Python
+        ##line is a list
             name, *line = input().split()
-            #Other way of taking the input is below
-            """singleLine = input().split()
-            name, line = singleLine[0], singleLine[1:]"""
-            scores = list(map(float,line))
+            #We convert the list that is in variable line to float using map function.
+            scores = list(map(float, line))
             student_marks[name] = scores
-        query_name = str(input())
-        if student_marks.__contains__(query_name):
-            x = student_marks.get(query_name)
-            total = sum(x)
-            avg = total/3
-            print('%.2f' %avg)
-            #print("{0:.2f}".format(avg))
-        else:
-            print("%s not found" %query_name)
-    
+        query_name = input()
+
+        if query_name in student_marks:
+            total = sum(student_marks[query_name])
+            avg = total/(len(student_marks[query_name]))
+            print(f"{avg:.2f}")
+
 if __name__ == '__main__':
     e = Solution
     e.solve()
