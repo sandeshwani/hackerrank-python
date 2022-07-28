@@ -32,6 +32,7 @@ if __name__ == '__main__':
     N = int(input())
     y = list()
     for _ in range(N):
+        ##On the left hand side, we are using only one variable. If two then we will use `cmd, *fullQuery = input().split()`
         fullQuery = input().split(' ')
         command = fullQuery[0]
         args = fullQuery[1:]
